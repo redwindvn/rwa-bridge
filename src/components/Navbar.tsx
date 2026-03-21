@@ -4,10 +4,9 @@ import { useState } from "react";
 const navLinks = [
   { label: "Problem", href: "#problem" },
   { label: "Solution", href: "#tokenization" },
-  { label: "Proof", href: "#proof" },
+  { label: "Flow", href: "#flow-diagram" },
   { label: "Infrastructure", href: "#infrastructure" },
   { label: "Benefits", href: "#benefits" },
-  { label: "Legal", href: "#legal" },
   { label: "Market", href: "#market" },
   { label: "Roadmap", href: "#roadmap" },
 ];
@@ -25,7 +24,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-navy/95 backdrop-blur-md shadow-lg shadow-black/10"
+          ? "bg-[hsl(220,60%,10%)]/95 backdrop-blur-md shadow-lg shadow-black/10"
           : "bg-transparent"
       }`}
     >
@@ -65,7 +64,7 @@ const Navbar = () => {
         </button>
       </div>
       {mobileOpen && (
-        <div className="lg:hidden bg-navy/95 backdrop-blur-md border-t border-white/10 pb-4">
+        <div className="lg:hidden bg-[hsl(220,60%,10%)]/95 backdrop-blur-md border-t border-white/10 pb-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
