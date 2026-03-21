@@ -1,4 +1,5 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
+import techPattern from "@/assets/tech-pattern.jpg";
 
 const phases = [
   {
@@ -10,7 +11,6 @@ const phases = [
       "Establish the Digital Agriculture Finance Alliance",
       "Scientific paper publication",
       "RWA Roundtable with stakeholders",
-      "VIFC Sandbox Seminar",
     ],
   },
   {
@@ -22,7 +22,6 @@ const phases = [
       "Sign partnership agreements",
       "Deploy smart contracts",
       "First on-chain transaction — real goods, tokenized",
-      "Launch RWA Investment Fund",
     ],
   },
   {
@@ -31,23 +30,26 @@ const phases = [
     time: "H2 2026+",
     badge: "Proof: A new market has been created",
     items: [
-      "Official RWA Hub launch (July 2026, during HCMC 50th anniversary)",
+      "Official RWA Hub launch (July 2026)",
       "Expand to coffee, pepper, cashew, rubber",
-      "Connect international investment funds",
       "Scale across Southeast Asia",
     ],
   },
 ];
 
 const Roadmap = () => (
-  <section id="roadmap" className="section-dark py-24 md:py-32">
-    <div className="container mx-auto">
+  <section id="roadmap" className="relative py-20 md:py-28 overflow-hidden">
+    <div className="absolute inset-0">
+      <img src={techPattern} alt="" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,60%,8%)/0.92] via-[hsl(200,55%,12%)/0.88] to-[hsl(180,50%,14%)/0.85]" />
+    </div>
+    <div className="container mx-auto relative z-10">
       <SectionTitle light>Development Roadmap</SectionTitle>
 
-      <div className="mt-12 grid md:grid-cols-3 gap-6">
+      <div className="mt-10 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
         {phases.map((p, i) => (
           <ScrollReveal key={p.phase} delay={i * 0.1}>
-            <div className="h-full flex flex-col p-7 rounded-lg border border-white/[0.06] bg-white/[0.03]">
+            <div className="min-w-[300px] max-w-[340px] snap-start flex flex-col p-7 rounded-lg border border-white/[0.06] bg-white/[0.04]">
               <div className="flex items-baseline gap-3 mb-1">
                 <span className="text-xs font-semibold uppercase tracking-wider text-teal">{p.phase}</span>
                 <span className="text-xs text-white/30">{p.time}</span>

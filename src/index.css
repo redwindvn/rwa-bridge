@@ -33,6 +33,11 @@
     --teal: 164 82% 27%;
     --gold: 41 68% 48%;
     --surface-light: 220 20% 98%;
+
+    /* New gradient palette */
+    --gradient-start: 220 60% 12%;
+    --gradient-mid: 210 55% 18%;
+    --gradient-end: 200 50% 22%;
   }
 }
 
@@ -52,8 +57,9 @@
 
 @layer utilities {
   .section-dark {
-    background-color: hsl(var(--navy));
+    background: linear-gradient(135deg, hsl(220 60% 10%), hsl(200 55% 16%), hsl(190 50% 14%));
     color: hsl(0 0% 100%);
+    position: relative;
   }
   .section-light {
     background-color: hsl(var(--surface-light));

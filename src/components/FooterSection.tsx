@@ -1,7 +1,7 @@
 import { ScrollReveal } from "./ScrollReveal";
 
 const FooterSection = () => (
-  <section id="contact" className="section-dark py-24 md:py-32 border-t border-white/[0.06]">
+  <section id="contact" className="section-dark py-20 md:py-28 border-t border-white/[0.06]">
     <div className="container mx-auto text-center">
       <ScrollReveal>
         <h2 className="text-heading md:text-display font-bold text-white mb-6">
@@ -27,10 +27,9 @@ const FooterSection = () => (
           <div className="flex flex-wrap items-center gap-6 text-sm text-white/30">
             <a href="#" className="hover:text-white/60 transition-colors">VIFC-HCMC</a>
             <a href="#" className="hover:text-white/60 transition-colors">GOE Alliance</a>
-            <a href="#" className="hover:text-white/60 transition-colors">Decree 330 Reference</a>
           </div>
           <p className="text-xs text-white/20">
-            This site is for institutional stakeholders. RWA Hub operates within the VIFC-HCMC regulatory sandbox.
+            RWA Hub operates within the VIFC-HCMC regulatory sandbox.
           </p>
         </div>
       </ScrollReveal>
