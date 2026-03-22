@@ -47,20 +47,27 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        navy: {
-          DEFAULT: "hsl(var(--navy))",
-          light: "hsl(var(--navy-light))",
+        teal: {
+          DEFAULT: "hsl(var(--teal))",
+          light: "hsl(var(--teal-light))",
         },
-        teal: "hsl(var(--teal))",
-        gold: "hsl(var(--gold))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+        },
+        sage: {
+          DEFAULT: "hsl(var(--sage))",
+          mid: "hsl(var(--sage-mid))",
+        },
       },
       fontFamily: {
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'display': ['3.5rem', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'display-lg': ['4rem', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'heading': ['2.25rem', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        'display': ['3.75rem', { lineHeight: '1.05' }],
+        'display-lg': ['4.5rem', { lineHeight: '1.02' }],
+        'heading': ['2.5rem', { lineHeight: '1.1' }],
         'subheading': ['1.25rem', { lineHeight: '1.6' }],
         'body-lg': ['1.125rem', { lineHeight: '1.7' }],
       },

@@ -40,7 +40,7 @@ export const SectionTitle = ({
 }) => (
   <ScrollReveal>
     <h2
-      className={`text-heading md:text-display font-bold mb-6 ${
+      className={`text-heading md:text-display font-serif mb-6 ${
         light ? "text-white" : "text-foreground"
       }`}
     >
