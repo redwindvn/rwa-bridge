@@ -26,7 +26,8 @@ const challenges = [
 ];
 
 const WhyTokenization = () => (
-  <section id="tokenization" className="section-white py-24 md:py-32">
+  <section id="tokenization" className="section-white py-24 md:py-32 relative overflow-hidden">
+    <AnimatedBlockchainBg opacity={0.04} color="teal" />
     <div className="container mx-auto">
       <SectionTitle>Why Blockchain? Because Paper Doesn't Scale.</SectionTitle>
       <ScrollReveal delay={0.05}>
