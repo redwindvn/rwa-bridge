@@ -24,12 +24,12 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[hsl(220,60%,10%)]/95 backdrop-blur-md shadow-lg shadow-black/10"
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4">
-        <a href="#" className="text-lg font-bold text-white tracking-tight">
+        <a href="#" className="text-xl font-serif text-foreground">
           RWA Hub
         </a>
         <div className="hidden lg:flex items-center gap-8">
@@ -37,7 +37,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-white/60 hover:text-white transition-colors duration-200"
+              className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -45,13 +45,13 @@ const Navbar = () => {
         </div>
         <a
           href="#contact"
-          className="hidden lg:inline-flex text-sm font-medium px-5 py-2.5 rounded-md bg-teal text-white hover:opacity-90 transition-opacity active:scale-[0.97]"
+          className="hidden lg:inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-teal-DEFAULT text-white hover:opacity-90 transition-opacity active:scale-[0.97]"
         >
           Contact
         </a>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-white p-2"
+          className="lg:hidden text-foreground p-2"
           aria-label="Toggle menu"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -64,13 +64,13 @@ const Navbar = () => {
         </button>
       </div>
       {mobileOpen && (
-        <div className="lg:hidden bg-[hsl(220,60%,10%)]/95 backdrop-blur-md border-t border-white/10 pb-4">
+        <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-border pb-4">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block px-6 py-3 text-sm text-white/70 hover:text-white transition-colors"
+              className="block px-6 py-3 text-sm font-sans text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </a>
@@ -79,7 +79,7 @@ const Navbar = () => {
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex text-sm font-medium px-5 py-2.5 rounded-md bg-teal text-white"
+              className="inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-teal-DEFAULT text-white"
             >
               Contact
             </a>

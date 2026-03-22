@@ -50,21 +50,20 @@ const stakeholders = [
 ];
 
 const WhoBenefits = () => (
-  <section id="benefits" className="section-light py-20 md:py-28">
+  <section id="benefits" className="section-white py-24 md:py-32">
     <div className="container mx-auto">
       <SectionTitle>Every Participant Contributes What They Already Do</SectionTitle>
 
-      {/* Horizontal scrollable row on all screens */}
-      <div className="mt-10 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
+      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {stakeholders.map((s, i) => (
-          <ScrollReveal key={s.title} delay={i * 0.07}>
-            <div className="min-w-[260px] max-w-[280px] snap-start p-6 rounded-lg border border-border bg-card shadow-sm flex flex-col">
-              <s.icon className="w-7 h-7 mb-4 text-muted-foreground" strokeWidth={1.5} />
-              <h3 className="text-base font-semibold mb-3">{s.title}</h3>
-              <ul className="space-y-1.5 flex-1">
+          <ScrollReveal key={s.title} delay={i * 0.06}>
+            <div className="p-7 rounded-xl border border-border bg-white shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+              <s.icon className="w-7 h-7 mb-5 text-muted-foreground" strokeWidth={1.5} />
+              <h3 className="font-serif text-xl mb-4">{s.title}</h3>
+              <ul className="space-y-2 flex-1">
                 {s.points.map((p) => (
-                  <li key={p} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
-                    <span className="text-teal shrink-0 mt-0.5">—</span>
+                  <li key={p} className="text-sm font-sans text-muted-foreground leading-relaxed flex gap-2.5">
+                    <span className="text-teal-DEFAULT shrink-0 mt-0.5">—</span>
                     {p}
                   </li>
                 ))}
@@ -75,7 +74,7 @@ const WhoBenefits = () => (
       </div>
 
       <ScrollReveal delay={0.4}>
-        <p className="mt-10 text-center text-body-lg text-muted-foreground italic">
+        <p className="mt-14 text-center text-body-lg text-muted-foreground italic font-serif">
           "No one needs to change their business — just connect to the infrastructure."
         </p>
       </ScrollReveal>
