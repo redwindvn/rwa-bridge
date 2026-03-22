@@ -1,8 +1,10 @@
 import { ScrollReveal } from "./ScrollReveal";
+import BlockchainBackground from "./BlockchainBackground";
 
 const FooterSection = () => (
-  <section id="contact" className="py-24 md:py-32 bg-foreground">
-    <div className="container mx-auto text-center">
+  <section id="contact" className="py-24 md:py-32 bg-foreground relative overflow-hidden">
+    <BlockchainBackground className="opacity-30" />
+    <div className="container mx-auto text-center relative z-10">
       <ScrollReveal>
         <h2 className="text-heading md:text-display font-serif text-white mb-6">
           Building Financial Infrastructure for the Next Century of Vietnamese Trade
@@ -21,7 +23,6 @@ const FooterSection = () => (
           Contact the Team
         </a>
       </ScrollReveal>
-
       <ScrollReveal delay={0.3}>
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-6 text-sm font-sans text-white/30">

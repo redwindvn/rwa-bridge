@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import WhyTokenization from "@/components/WhyTokenization";
-import FlowDiagram from "@/components/FlowDiagram";
 import InfrastructureFlow from "@/components/InfrastructureFlow";
 import WhoBenefits from "@/components/WhoBenefits";
 import MarketOpportunity from "@/components/MarketOpportunity";
@@ -15,7 +14,6 @@ const Index = () => (
     <Hero />
     <Problem />
     <WhyTokenization />
-    <FlowDiagram />
     <InfrastructureFlow />
     <WhoBenefits />
     <MarketOpportunity />
