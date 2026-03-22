@@ -1,8 +1,10 @@
 import { ScrollReveal } from "./ScrollReveal";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const MarketOpportunity = () => (
-  <section id="market" className="section-white py-24 md:py-32">
-    <div className="container mx-auto">
+  <section id="market" className="section-white py-24 md:py-32 relative overflow-hidden">
+    <AnimatedBlockchainBg opacity={0.04} />
+    <div className="container mx-auto relative z-10">
       <ScrollReveal>
         <div className="text-center max-w-3xl mx-auto">
           <div className="text-7xl md:text-8xl font-serif text-foreground mb-6 tabular-nums">$93.3B</div>
