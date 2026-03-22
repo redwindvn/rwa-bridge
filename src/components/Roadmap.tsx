@@ -1,4 +1,5 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const phases = [
   {
@@ -37,7 +38,8 @@ const phases = [
 ];
 
 const Roadmap = () => (
-  <section id="roadmap" className="section-sage py-24 md:py-32">
+  <section id="roadmap" className="section-sage py-24 md:py-32 relative overflow-hidden">
+    <AnimatedBlockchainBg opacity={0.05} color="purple" />
     <div className="container mx-auto">
       <SectionTitle>Development Roadmap</SectionTitle>
 
