@@ -1,4 +1,5 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const phases = [
   {
