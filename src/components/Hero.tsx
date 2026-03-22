@@ -1,5 +1,5 @@
 import { ScrollReveal } from "./ScrollReveal";
-import BlockchainBackground from "./BlockchainBackground";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 import riceFields from "@/assets/rice-fields.jpg";
 
 const stats = [
@@ -15,13 +15,12 @@ const partners = [
 
 const Hero = () => (
   <section className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden bg-background">
-    <BlockchainBackground className="opacity-60" />
-    {/* Subtle agricultural bg */}
+    <AnimatedBlockchainBg opacity={0.06} />
     <div className="absolute inset-0 opacity-[0.03]">
       <img src={riceFields} alt="" className="w-full h-full object-cover" />
     </div>
     <div className="absolute top-20 right-0 w-[600px] h-[600px] rounded-full bg-[hsl(164,60%,90%)] blur-[120px] opacity-40" />
-    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[hsl(41,60%,92%)] blur-[100px] opacity-30" />
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[hsl(260,50%,92%)] blur-[100px] opacity-25" />
 
     <div className="container mx-auto py-16 md:py-24 relative z-10">
       <div className="grid lg:grid-cols-[1.3fr_1fr] gap-16 items-center">
@@ -55,7 +54,7 @@ const Hero = () => (
         <ScrollReveal delay={0.3}>
           <div className="grid grid-cols-2 gap-4">
             {stats.map((stat) => (
-              <div key={stat.value} className="p-6 rounded-xl bg-white border border-border shadow-sm">
+              <div key={stat.value} className="p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-border shadow-sm">
                 <div className="text-2xl md:text-3xl font-serif text-foreground mb-2 tabular-nums">{stat.value}</div>
                 <div className="text-xs font-sans text-muted-foreground leading-relaxed">{stat.label}</div>
               </div>
