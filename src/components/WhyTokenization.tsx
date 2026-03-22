@@ -1,5 +1,6 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
 import { ArrowRight } from "lucide-react";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const challenges = [
   {
