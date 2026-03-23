@@ -5,6 +5,7 @@ import WhyTokenization from "@/components/WhyTokenization";
 import InfrastructureFlow from "@/components/InfrastructureFlow";
 import WhoBenefits from "@/components/WhoBenefits";
 import MarketOpportunity from "@/components/MarketOpportunity";
+import Partners from "@/components/Partners";
 import Roadmap from "@/components/Roadmap";
 import FooterSection from "@/components/FooterSection";
 
@@ -17,6 +18,7 @@ const Index = () => (
     <InfrastructureFlow />
     <WhoBenefits />
     <MarketOpportunity />
+    <Partners />
     <Roadmap />
     <FooterSection />
   </>

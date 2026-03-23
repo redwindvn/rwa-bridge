@@ -32,8 +32,10 @@
     --teal-light: 164 60% 94%;
     --gold: 41 68% 48%;
     --gold-light: 41 60% 94%;
-    --sage: 150 15% 96%;
-    --sage-mid: 150 12% 88%;
+    --sage: 140 18% 96%;
+    --sage-mid: 140 14% 88%;
+    --green-accent: 142 60% 40%;
+    --green-light: 140 50% 94%;
   }
 }
 

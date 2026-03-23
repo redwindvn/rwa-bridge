@@ -3,13 +3,14 @@ import { useEffect, useRef } from "react";
 interface Props {
   className?: string;
   opacity?: number;
-  color?: "teal" | "purple" | "mixed";
+  color?: "teal" | "green" | "purple" | "mixed";
 }
 
 const COLORS = {
   teal: { node: [13, 124, 102], line: [13, 124, 102] },
+  green: { node: [34, 139, 34], line: [22, 163, 74] },
   purple: { node: [94, 53, 177], line: [94, 53, 177] },
-  mixed: { node: [13, 124, 102], line: [94, 53, 177] },
+  mixed: { node: [22, 163, 74], line: [13, 124, 102] },
 };
 
 const AnimatedBlockchainBg = ({ className = "", opacity = 0.07, color = "mixed" }: Props) => {
@@ -25,9 +26,10 @@ const AnimatedBlockchainBg = ({ className = "", opacity = 0.07, color = "mixed" 
     let w = 0, h = 0;
     const pal = COLORS[color];
 
-    interface Node { x: number; y: number; vx: number; vy: number; r: number; phase: number; }
+    interface Node { x: number; y: number; vx: number; vy: number; r: number; phase: number; type: "hex" | "circle" | "diamond"; }
     const nodes: Node[] = [];
-    const COUNT = 40;
+    const COUNT = 55;
+    const types: Node["type"][] = ["hex", "circle", "diamond"];
 
     const resize = () => {
       const rect = canvas.parentElement?.getBoundingClientRect();
@@ -43,8 +45,9 @@ const AnimatedBlockchainBg = ({ className = "", opacity = 0.07, color = "mixed" 
       for (let i = 0; i < COUNT; i++) {
         nodes.push({
           x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+          vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2,
           r: 2 + Math.random() * 3, phase: Math.random() * Math.PI * 2,
+          type: types[Math.floor(Math.random() * types.length)],
         });
       }
     };
@@ -59,6 +62,21 @@ const AnimatedBlockchainBg = ({ className = "", opacity = 0.07, color = "mixed" 
       ctx.closePath();
     };
 
+    const diamond = (cx: number, cy: number, r: number) => {
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - r);
+      ctx.lineTo(cx + r * 0.7, cy);
+      ctx.lineTo(cx, cy + r);
+      ctx.lineTo(cx - r * 0.7, cy);
+      ctx.closePath();
+    };
+
+    const drawShape = (n: Node, r: number) => {
+      if (n.type === "hex") hex(n.x, n.y, r);
+      else if (n.type === "diamond") diamond(n.x, n.y, r);
+      else { ctx.beginPath(); ctx.arc(n.x, n.y, r * 0.6, 0, Math.PI * 2); }
+    };
+
     const draw = (t: number) => {
       ctx.clearRect(0, 0, w, h);
       for (const n of nodes) {
@@ -68,14 +86,29 @@ const AnimatedBlockchainBg = ({ className = "", opacity = 0.07, color = "mixed" 
       }
 
       const [lr, lg, lb] = pal.line;
-      ctx.lineWidth = 0.7;
+      ctx.lineWidth = 0.5;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
           const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 200) {
-            ctx.strokeStyle = `rgba(${lr},${lg},${lb},${(1 - d / 200) * 0.4})`;
-            ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
+          if (d < 180) {
+            const a = (1 - d / 180) * 0.35;
+            ctx.strokeStyle = `rgba(${lr},${lg},${lb},${a})`;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+
+            // Animated pulse dot along the line
+            if (d < 100) {
+              const prog = ((t * 0.0003 + i * 0.1) % 1);
+              const px = nodes[i].x + (nodes[j].x - nodes[i].x) * prog;
+              const py = nodes[i].y + (nodes[j].y - nodes[i].y) * prog;
+              ctx.fillStyle = `rgba(${lr},${lg},${lb},${a * 0.8})`;
+              ctx.beginPath();
+              ctx.arc(px, py, 1.2, 0, Math.PI * 2);
+              ctx.fill();
+            }
           }
         }
       }
@@ -83,10 +116,11 @@ const AnimatedBlockchainBg = ({ className = "", opacity = 0.07, color = "mixed" 
       const [nr, ng, nb] = pal.node;
       for (const n of nodes) {
         const p = 0.8 + 0.2 * Math.sin(t * 0.001 + n.phase);
-        ctx.fillStyle = `rgba(${nr},${ng},${nb},${0.35 * p})`;
-        hex(n.x, n.y, n.r * 2.5); ctx.fill();
-        ctx.fillStyle = `rgba(${lr},${lg},${lb},${0.25 * p})`;
-        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = `rgba(${nr},${ng},${nb},${0.3 * p})`;
+        drawShape(n, n.r * 2.5);
+        ctx.fill();
+        ctx.fillStyle = `rgba(${lr},${lg},${lb},${0.2 * p})`;
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 0.8, 0, Math.PI * 2); ctx.fill();
       }
 
       animId = requestAnimationFrame(draw);
