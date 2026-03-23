@@ -2,6 +2,7 @@ import { ScrollReveal, SectionTitle } from "./ScrollReveal";
 import riceFields from "@/assets/rice-fields.jpg";
 import portTrade from "@/assets/port-trade.jpg";
 import warehouseImg from "@/assets/warehouse.jpg";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const cards = [
   {
@@ -22,13 +23,14 @@ const cards = [
 ];
 
 const Problem = () => (
-  <section id="problem" className="section-sage py-24 md:py-32">
-    <div className="container mx-auto">
+  <section id="problem" className="section-sage py-24 md:py-32 relative overflow-hidden">
+    <AnimatedBlockchainBg opacity={0.06} color="green" />
+    <div className="container mx-auto relative z-10">
       <SectionTitle>The Liquidity Problem Vietnam's Exporters Face Every Day</SectionTitle>
       <div className="grid md:grid-cols-3 gap-8 mt-12">
         {cards.map((card, i) => (
           <ScrollReveal key={card.title} delay={i * 0.08}>
-            <div className="group rounded-xl border border-border bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full">
+            <div className="group rounded-xl border border-[hsl(var(--green-accent))]/15 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full">
               <div className="aspect-[16/10] overflow-hidden flex-shrink-0">
                 <img
                   src={card.image}

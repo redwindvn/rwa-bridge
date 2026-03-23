@@ -1,5 +1,4 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
-import { ArrowRight } from "lucide-react";
 import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const challenges = [
@@ -27,8 +26,8 @@ const challenges = [
 
 const WhyTokenization = () => (
   <section id="tokenization" className="section-white py-24 md:py-32 relative overflow-hidden">
-    <AnimatedBlockchainBg opacity={0.04} color="teal" />
-    <div className="container mx-auto">
+    <AnimatedBlockchainBg opacity={0.08} color="green" />
+    <div className="container mx-auto relative z-10">
       <SectionTitle>Why Blockchain? Because Paper Doesn't Scale.</SectionTitle>
       <ScrollReveal delay={0.05}>
         <p className="text-body-lg text-muted-foreground max-w-3xl mb-14">
@@ -40,7 +39,7 @@ const WhyTokenization = () => (
       <div className="space-y-6">
         {challenges.map((c, i) => (
           <ScrollReveal key={c.problem} delay={i * 0.06}>
-            <div className="rounded-xl border border-border bg-white p-8 md:p-10">
+            <div className="rounded-xl border border-[hsl(var(--green-accent))]/12 bg-white p-8 md:p-10">
               <h3 className="font-serif text-2xl text-foreground mb-6">{c.problem}</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -52,8 +51,8 @@ const WhyTokenization = () => (
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2 h-2 rounded-full bg-teal-DEFAULT" />
-                    <span className="text-xs font-sans font-semibold uppercase tracking-wider text-teal-DEFAULT">RWA Hub Infrastructure</span>
+                    <div className="w-2 h-2 rounded-full bg-[hsl(var(--green-accent))]" />
+                    <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[hsl(var(--green-accent))]">RWA Hub Infrastructure</span>
                   </div>
                   <p className="text-sm font-sans text-foreground leading-relaxed">{c.solution}</p>
                 </div>
@@ -64,10 +63,10 @@ const WhyTokenization = () => (
       </div>
 
       <ScrollReveal delay={0.35}>
-        <div className="mt-14 p-8 rounded-xl bg-[hsl(var(--teal-light))] border border-[hsl(var(--teal))]/10">
+        <div className="mt-14 p-8 rounded-xl bg-[hsl(var(--green-light))] border border-[hsl(var(--green-accent))]/15">
           <p className="text-body-lg text-foreground leading-relaxed">
             We don't replace existing processes. Warehouses still warehouse. Banks still lend. Inspectors still inspect.{" "}
-            <span className="font-semibold">We digitize the connections between them</span> — creating a single source of truth that unlocks capital trapped in physical goods.
+            <span className="font-semibold text-[hsl(var(--green-accent))]">We digitize the connections between them</span> — creating a single source of truth that unlocks capital trapped in physical goods.
           </p>
         </div>
       </ScrollReveal>
