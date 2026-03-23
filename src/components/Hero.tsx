@@ -5,7 +5,7 @@ import riceFields from "@/assets/rice-fields.jpg";
 
 const stats = [
   { end: 93.3, prefix: "$", suffix: "B", decimals: 1, label: "Annual agricultural exports across Southeast Asia" },
-  { end: 5.8, prefix: "$", suffix: "B", decimals: 1, label: "Vietnam rice exports alone (2024)" },
+  { end: 20, prefix: "$", suffix: "B", decimals: 0, label: "Vietnam's export turnover for 4 key dried agricultural products" },
   { end: 48, prefix: "", suffix: "%", decimals: 0, label: "CAGR — fastest-growing RWA segment" },
   { end: 200, prefix: "$", suffix: "B", decimals: 0, label: "Annual transaction volume" },
 ];
