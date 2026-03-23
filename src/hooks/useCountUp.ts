@@ -8,7 +8,7 @@ export function useCountUp(
   suffix = "",
   decimals = 0
 ) {
-  const ref = useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref as any, { once: true, amount: 0.5 });
   const [display, setDisplay] = useState(`${prefix}0${suffix}`);
   const hasRun = useRef(false);
