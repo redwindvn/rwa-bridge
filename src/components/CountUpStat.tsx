@@ -13,7 +13,7 @@ const CountUpStat = ({ end, prefix = "", suffix = "", decimals = 0, label, durat
   const { ref, display } = useCountUp(end, duration, prefix, suffix, decimals);
 
   return (
-    <div className="p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-border shadow-sm">
+    <div className="p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-[hsl(var(--green-accent))]/15 shadow-sm">
       <div ref={ref} className="text-2xl md:text-3xl font-serif text-foreground mb-2 tabular-nums">
         {display}
       </div>

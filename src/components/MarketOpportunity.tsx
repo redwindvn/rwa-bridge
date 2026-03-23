@@ -13,7 +13,7 @@ const MarketNumber = () => {
 
 const MarketOpportunity = () => (
   <section id="market" className="section-white py-24 md:py-32 relative overflow-hidden">
-    <AnimatedBlockchainBg opacity={0.04} color="green" />
+    <AnimatedBlockchainBg opacity={0.08} color="green" />
     <div className="container mx-auto relative z-10">
       <ScrollReveal>
         <div className="text-center max-w-3xl mx-auto">

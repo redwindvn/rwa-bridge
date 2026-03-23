@@ -2,8 +2,8 @@ import { ScrollReveal } from "./ScrollReveal";
 import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const FooterSection = () => (
-  <section id="contact" className="py-24 md:py-32 bg-foreground relative overflow-hidden">
-    <AnimatedBlockchainBg opacity={0.08} />
+  <section id="contact" className="py-24 md:py-32 bg-[hsl(160,30%,12%)] relative overflow-hidden">
+    <AnimatedBlockchainBg opacity={0.15} color="green" />
     <div className="container mx-auto text-center relative z-10">
       <ScrollReveal>
         <h2 className="text-heading md:text-display font-serif text-white mb-6">
@@ -16,7 +16,7 @@ const FooterSection = () => (
         </p>
       </ScrollReveal>
       <ScrollReveal delay={0.2}>
-        <a href="mailto:contact@rwahub.io" className="inline-flex items-center px-8 py-4 rounded-lg bg-teal-DEFAULT text-white font-sans font-medium hover:opacity-90 transition-opacity active:scale-[0.97]">
+        <a href="mailto:contact@rwahub.io" className="inline-flex items-center px-8 py-4 rounded-lg bg-[hsl(var(--green-accent))] text-white font-sans font-medium hover:opacity-90 transition-opacity active:scale-[0.97]">
           Contact the Team
         </a>
       </ScrollReveal>

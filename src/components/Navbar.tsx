@@ -21,18 +21,18 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"
+      scrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-[hsl(var(--green-accent))]/10" : "bg-transparent"
     }`}>
       <div className="container mx-auto flex items-center justify-between py-4">
         <a href="#" className="text-xl font-serif text-foreground">RWA Hub</a>
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <a key={link.href} href={link.href} className="text-sm font-sans text-muted-foreground hover:text-[hsl(var(--green-accent))] transition-colors duration-200">
               {link.label}
             </a>
           ))}
         </div>
-        <a href="#contact" className="hidden lg:inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-teal-DEFAULT text-white hover:opacity-90 transition-opacity active:scale-[0.97]">
+        <a href="#contact" className="hidden lg:inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-[hsl(var(--green-accent))] text-white hover:opacity-90 transition-opacity active:scale-[0.97]">
           Contact
         </a>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-foreground p-2" aria-label="Toggle menu">
@@ -44,12 +44,12 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-border pb-4">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="block px-6 py-3 text-sm font-sans text-muted-foreground hover:text-foreground transition-colors">
+            <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="block px-6 py-3 text-sm font-sans text-muted-foreground hover:text-[hsl(var(--green-accent))] transition-colors">
               {link.label}
             </a>
           ))}
           <div className="px-6 pt-2">
-            <a href="#contact" onClick={() => setMobileOpen(false)} className="inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-teal-DEFAULT text-white">
+            <a href="#contact" onClick={() => setMobileOpen(false)} className="inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-[hsl(var(--green-accent))] text-white">
               Contact
             </a>
           </div>

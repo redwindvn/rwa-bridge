@@ -1,5 +1,6 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
 import { Building2, Landmark, LineChart, Container, Shield } from "lucide-react";
+import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const stakeholders = [
   {
@@ -50,20 +51,21 @@ const stakeholders = [
 ];
 
 const WhoBenefits = () => (
-  <section id="benefits" className="section-white py-24 md:py-32">
-    <div className="container mx-auto">
+  <section id="benefits" className="section-white py-24 md:py-32 relative overflow-hidden">
+    <AnimatedBlockchainBg opacity={0.05} color="green" />
+    <div className="container mx-auto relative z-10">
       <SectionTitle>Every Participant Contributes What They Already Do</SectionTitle>
 
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {stakeholders.map((s, i) => (
           <ScrollReveal key={s.title} delay={i * 0.06}>
-            <div className="p-7 rounded-xl border border-border bg-white shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
-              <s.icon className="w-7 h-7 mb-5 text-muted-foreground" strokeWidth={1.5} />
+            <div className="p-7 rounded-xl border border-[hsl(var(--green-accent))]/12 bg-white shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+              <s.icon className="w-7 h-7 mb-5 text-[hsl(var(--green-accent))]" strokeWidth={1.5} />
               <h3 className="font-serif text-xl mb-4">{s.title}</h3>
               <ul className="space-y-2 flex-1">
                 {s.points.map((p) => (
                   <li key={p} className="text-sm font-sans text-muted-foreground leading-relaxed flex gap-2.5">
-                    <span className="text-teal-DEFAULT shrink-0 mt-0.5">—</span>
+                    <span className="text-[hsl(var(--green-accent))] shrink-0 mt-0.5">—</span>
                     {p}
                   </li>
                 ))}
