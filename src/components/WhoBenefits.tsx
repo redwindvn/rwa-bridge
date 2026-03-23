@@ -1,5 +1,5 @@
 import { ScrollReveal, SectionTitle } from "./ScrollReveal";
-import { Building2, Landmark, LineChart, Container, Shield } from "lucide-react";
+import { Building2, Landmark, Globe, Container, Shield } from "lucide-react";
 import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const stakeholders = [
@@ -7,45 +7,44 @@ const stakeholders = [
     icon: Building2,
     title: "Agricultural Enterprises",
     points: [
-      "Unlock dead capital trapped in warehouses",
-      "Access trade finance in days instead of weeks",
-      "Sell fractionally at market price",
+      "Unlock trapped capital",
+      "Access finance in minutes",
+      "Build on-chain credit history",
     ],
   },
   {
     icon: Landmark,
-    title: "Banks & Financial Institutions",
+    title: "Banks",
     points: [
-      "Real-time transparent collateral",
-      "New digital credit products backed by physical assets",
+      "Real-time collateral monitoring",
+      "New digital lending products",
       "Lower risk premium",
     ],
   },
   {
-    icon: LineChart,
-    title: "Investment Funds",
+    icon: Globe,
+    title: "International Buyers",
     points: [
-      "Commodity-backed tokens with real goods behind them",
-      "High liquidity, instant verification",
-      "Direct access to SEA agricultural markets",
+      "Full supply chain traceability",
+      "Faster settlement",
+      "EU sustainability compliance built in",
     ],
   },
   {
     icon: Container,
     title: "Warehousing & Inspection",
     points: [
-      "Stable recurring custody revenue",
-      "Expanded services into digital infrastructure",
-      "No operational change required",
+      "New revenue from digital infrastructure",
+      "Zero operational change required",
     ],
   },
   {
     icon: Shield,
     title: "Government & Regulators",
     points: [
-      "Full audit trail for international capital flows",
-      "On-chain supervision capability",
-      "Regional leadership in commodity finance",
+      "Complete audit trail",
+      "On-chain supervision",
+      "Regional innovation leadership",
     ],
   },
 ];

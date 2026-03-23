@@ -3,9 +3,9 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "Problem", href: "#problem" },
+  { label: "Why Vietnam", href: "#vietnam" },
   { label: "Solution", href: "#tokenization" },
   { label: "Infrastructure", href: "#infrastructure" },
-  { label: "Benefits", href: "#benefits" },
   { label: "Market", href: "#market" },
   { label: "Roadmap", href: "#roadmap" },
 ];
@@ -33,7 +33,7 @@ const Navbar = () => {
           ))}
         </div>
         <a href="#contact" className="hidden lg:inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-[hsl(var(--green-accent))] text-white hover:opacity-90 transition-opacity active:scale-[0.97]">
-          Contact
+          Partner With Us
         </a>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-foreground p-2" aria-label="Toggle menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -50,7 +50,7 @@ const Navbar = () => {
           ))}
           <div className="px-6 pt-2">
             <a href="#contact" onClick={() => setMobileOpen(false)} className="inline-flex text-sm font-sans font-medium px-5 py-2.5 rounded-lg bg-[hsl(var(--green-accent))] text-white">
-              Contact
+              Partner With Us
             </a>
           </div>
         </div>

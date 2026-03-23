@@ -7,17 +7,17 @@ const FooterSection = () => (
     <div className="container mx-auto text-center relative z-10">
       <ScrollReveal>
         <h2 className="text-heading md:text-display font-serif text-white mb-6">
-          Building Financial Infrastructure for the Next Century of Vietnamese Trade
+          We're not building a technology product. We're creating a new market.
         </h2>
       </ScrollReveal>
       <ScrollReveal delay={0.1}>
         <p className="text-subheading font-sans text-white/50 max-w-2xl mx-auto mb-10">
-          RWA Hub is developed by GOE Alliance in partnership with VIFC-HCMC. For partnership inquiries, contact us.
+          $200 billion in agricultural commodities. Zero on-chain infrastructure — until now.
         </p>
       </ScrollReveal>
       <ScrollReveal delay={0.2}>
         <a href="mailto:contact@rwahub.io" className="inline-flex items-center px-8 py-4 rounded-lg bg-[hsl(var(--green-accent))] text-white font-sans font-medium hover:opacity-90 transition-opacity active:scale-[0.97]">
-          Contact the Team
+          Partner With Us
         </a>
       </ScrollReveal>
       <ScrollReveal delay={0.3}>
