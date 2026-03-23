@@ -4,35 +4,42 @@ import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 const phases = [
   {
     phase: "Phase 1",
-    title: "Prove the Model",
-    time: "Q1 2026",
-    badge: "Proof: This model works",
+    title: "Proof of Concept",
+    time: "2026",
+    badge: "Weeks to minutes",
     items: [
-      "Establish the Digital Agriculture Finance Alliance",
-      "Scientific paper publication",
-      "RWA Roundtable with stakeholders",
+      "One commodity: rice",
+      "First end-to-end tokenized transaction",
     ],
   },
   {
     phase: "Phase 2",
-    title: "Complete the Value Chain",
-    time: "Q1–Q2 2026",
-    badge: "Proof: Real goods are on-chain",
+    title: "Multi-Commodity",
+    time: "2027",
+    badge: "Multiple commodities on-chain",
     items: [
-      "Sign partnership agreements",
-      "Deploy smart contracts",
-      "First on-chain transaction — real goods, tokenized",
+      "Coffee, pepper, cashew, rubber",
+      "Secondary market trading",
     ],
   },
   {
     phase: "Phase 3",
-    title: "Scale Operations",
-    time: "H2 2026+",
-    badge: "Proof: A new market has been created",
+    title: "Southeast Asia",
+    time: "2028–2029",
+    badge: "A regional market forming",
     items: [
-      "Official RWA Hub launch (July 2026)",
-      "Expand to coffee, pepper, cashew, rubber",
-      "Scale across Southeast Asia",
+      "Thailand, Indonesia, Malaysia",
+      "Cross-border warehouse network",
+    ],
+  },
+  {
+    phase: "Phase 4",
+    title: "Open Market",
+    time: "2029+",
+    badge: "A new market created",
+    items: [
+      "Formal exchange structure",
+      "Commodity funds and derivatives",
     ],
   },
 ];
@@ -43,15 +50,15 @@ const Roadmap = () => (
     <div className="container mx-auto relative z-10">
       <SectionTitle>Development Roadmap</SectionTitle>
 
-      <div className="mt-12 grid md:grid-cols-3 gap-6">
+      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {phases.map((p, i) => (
-          <ScrollReveal key={p.phase} delay={i * 0.1}>
-            <div className="flex flex-col p-8 rounded-xl border border-[hsl(var(--green-accent))]/15 bg-white shadow-sm h-full">
+          <ScrollReveal key={p.phase} delay={i * 0.08}>
+            <div className="flex flex-col p-7 rounded-xl border border-[hsl(var(--green-accent))]/15 bg-white shadow-sm h-full">
               <div className="flex items-baseline gap-3 mb-2">
                 <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[hsl(var(--green-accent))]">{p.phase}</span>
                 <span className="text-xs font-sans text-muted-foreground">{p.time}</span>
               </div>
-              <h3 className="text-2xl font-serif text-foreground mb-5">{p.title}</h3>
+              <h3 className="text-xl font-serif text-foreground mb-5">{p.title}</h3>
               <ul className="space-y-3 flex-1 mb-6">
                 {p.items.map((item) => (
                   <li key={item} className="text-sm font-sans text-muted-foreground leading-relaxed flex gap-2.5">
@@ -61,7 +68,7 @@ const Roadmap = () => (
                 ))}
               </ul>
               <div className="pt-5 border-t border-[hsl(var(--green-accent))]/10">
-                <span className="text-xs font-sans font-medium text-gold-DEFAULT uppercase tracking-wider">{p.badge}</span>
+                <span className="text-xs font-sans font-medium text-[hsl(var(--gold))] uppercase tracking-wider">{p.badge}</span>
               </div>
             </div>
           </ScrollReveal>

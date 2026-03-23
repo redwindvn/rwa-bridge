@@ -7,18 +7,18 @@ import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 const cards = [
   {
     image: warehouseImg,
-    title: "Dead Capital in Warehouses",
-    desc: "Goods sit in warehouses waiting for ships. Capital is locked. Bank loan approvals take 2–4 weeks with high discount rates because banks have no visibility into warehouse inventory. Businesses miss trade windows and bear inflated capital costs.",
+    title: "Dead Capital",
+    desc: "$550,000 worth of rice sits in a warehouse waiting for a ship. The exporter can't touch it. Bank approval takes 2–4 weeks, and they'll only lend 40–60% of value. The rest is dead capital.",
   },
   {
     image: portTrade,
-    title: "Price Taker, Not Price Maker",
-    desc: "Despite being a top-3 global exporter, Vietnam depends on intermediaries and foreign exchanges for pricing. Urgent cash needs force distressed sales. Prices are set in London and Chicago — Vietnamese producers accept whatever they're given.",
+    title: "No Pricing Power",
+    desc: "Prices are set in London and Chicago. Vietnamese exporters — despite being top-3 globally — accept whatever they're given. Urgent cash needs force distressed sales below market.",
   },
   {
     image: riceFields,
-    title: "Broken Information Chain",
-    desc: "Warehouse receipts are paper-based, hard to verify, and only locally valid. Insurance, inspection certificates, and ownership records live in disconnected systems. No single source of truth exists across the value chain.",
+    title: "Paper Everywhere",
+    desc: "One shipment. 50 documents. 30 parties. 56–70% of submissions rejected on first try. The system runs on fax-era infrastructure in a digital-era economy.",
   },
 ];
 
@@ -26,7 +26,7 @@ const Problem = () => (
   <section id="problem" className="section-sage py-24 md:py-32 relative overflow-hidden">
     <AnimatedBlockchainBg opacity={0.06} color="green" />
     <div className="container mx-auto relative z-10">
-      <SectionTitle>The Liquidity Problem Vietnam's Exporters Face Every Day</SectionTitle>
+      <SectionTitle>The Liquidity Problem Exporters Face Every Day</SectionTitle>
       <div className="grid md:grid-cols-3 gap-8 mt-12">
         {cards.map((card, i) => (
           <ScrollReveal key={card.title} delay={i * 0.08}>
