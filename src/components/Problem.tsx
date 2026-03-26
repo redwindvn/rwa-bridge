@@ -8,17 +8,17 @@ const cards = [
   {
     image: warehouseImg,
     title: "Dead Capital",
-    desc: "$550,000 worth of rice sits in a warehouse waiting for a ship. The exporter can't touch it. Bank approval takes 2–4 weeks, and they'll only lend 40–60% of value. The rest is dead capital.",
+    desc: "$550,000 worth of rice sits in a warehouse waiting for a ship. The exporter can't touch it. Bank approval takes 2-4 weeks, and they'll only lend 40-60% of value. The rest is dead capital.",
   },
   {
     image: portTrade,
     title: "No Pricing Power",
-    desc: "Prices are set in London and Chicago. Vietnamese exporters — despite being top-3 globally — accept whatever they're given. Urgent cash needs force distressed sales below market.",
+    desc: "Prices are set in London and Chicago. Vietnamese exporters - despite being top-3 globally - accept whatever they're given. Urgent cash needs force distressed sales below market.",
   },
   {
     image: riceFields,
     title: "Paper Everywhere",
-    desc: "One shipment. 50 documents. 30 parties. 56–70% of submissions rejected on first try. The system runs on fax-era infrastructure in a digital-era economy.",
+    desc: "One shipment. 50 documents. 30 parties. 56-70% of submissions rejected on first try. The system runs on fax-era infrastructure in a digital-era economy.",
   },
 ];
 

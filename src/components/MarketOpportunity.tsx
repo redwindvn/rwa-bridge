@@ -33,7 +33,7 @@ const MarketOpportunity = () => (
           <div className="space-y-6">
             <div className="p-6 rounded-xl bg-[hsl(var(--green-light))] border border-[hsl(var(--green-accent))]/10">
               <MarketNumber />
-              <p className="text-sm font-sans text-muted-foreground mt-2">Total addressable market — annual exports</p>
+              <p className="text-sm font-sans text-muted-foreground mt-2">Total addressable market - annual exports</p>
             </div>
             <div className="p-6 rounded-xl bg-[hsl(var(--green-light))]/60 border border-[hsl(var(--green-accent))]/8 ml-6">
               <div className="text-3xl font-serif text-foreground tabular-nums">10%</div>
