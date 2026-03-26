@@ -28,7 +28,7 @@ const Hero = () => (
           </ScrollReveal>
           <ScrollReveal delay={0.16}>
             <p className="text-subheading text-muted-foreground max-w-xl mb-10">
-              The first Digital Commodity Finance Infrastructure in Southeast Asia. We turn warehouse inventory into working capital — in minutes, not weeks.
+              The first Digital Commodity Finance Infrastructure in Southeast Asia. We turn warehouse inventory into working capital - in minutes, not weeks.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.24}>
