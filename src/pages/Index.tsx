@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Partners from "@/components/Partners";
 import Problem from "@/components/Problem";
 import WhyVietnam from "@/components/WhyVietnam";
 import WhyTokenization from "@/components/WhyTokenization";
@@ -15,7 +14,6 @@ const Index = () => (
   <>
     <Navbar />
     <Hero />
-    <Partners />
     <Problem />
     <WhyVietnam />
     <WhyTokenization />

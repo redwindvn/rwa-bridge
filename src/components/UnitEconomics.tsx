@@ -3,15 +3,15 @@ import { useCountUp } from "@/hooks/useCountUp";
 import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 const traditional = [
-  { metric: "Time to Capital", value: "2–4 weeks" },
-  { metric: "Loan-to-Value", value: "40–60%" },
+  { metric: "Time to Capital", value: "2-4 weeks" },
+  { metric: "Loan-to-Value", value: "40-60%" },
   { metric: "Collateral Monitoring", value: "Periodic visits" },
-  { metric: "Settlement", value: "2–5 business days" },
+  { metric: "Settlement", value: "2-5 business days" },
 ];
 
 const rwaHub = [
   { metric: "Time to Capital", value: "Minutes" },
-  { metric: "Loan-to-Value", value: "80–90%" },
+  { metric: "Loan-to-Value", value: "80-90%" },
   { metric: "Collateral Monitoring", value: "Continuous on-chain" },
   { metric: "Settlement", value: "Instant" },
 ];

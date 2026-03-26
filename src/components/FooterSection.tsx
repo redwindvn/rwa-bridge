@@ -12,7 +12,7 @@ const FooterSection = () => (
       </ScrollReveal>
       <ScrollReveal delay={0.1}>
         <p className="text-subheading font-sans text-white/50 max-w-2xl mx-auto mb-10">
-          $200 billion in agricultural commodities. Zero on-chain infrastructure — until now.
+          $200 billion in agricultural commodities. Zero on-chain infrastructure - until now.
         </p>
       </ScrollReveal>
       <ScrollReveal delay={0.2}>

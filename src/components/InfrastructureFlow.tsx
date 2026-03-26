@@ -5,16 +5,12 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import AnimatedBlockchainBg from "./AnimatedBlockchainBg";
 
 /* ═══════════════════════════════════════════
-   COLORS — Green=Physical, Gold=Digital, Purple=Blockchain
+   COLORS - Green=Physical, Gold=Digital, Purple=Blockchain
    ═══════════════════════════════════════════ */
 const C = {
   green: { fill: "#2E7D32", stroke: "#1B5E20", text: "#fff" },
   gold: { fill: "#F9A825", stroke: "#F57F17", text: "#333" },
-  goldLight: { fill: "#FFD54F", stroke: "#F9A825", text: "#333" },
   purple: { fill: "#5E35B1", stroke: "#4527A0", text: "#fff" },
-  purpleLight: { fill: "#7E57C2", stroke: "#5E35B1", text: "#fff" },
-  diamond: { fill: "#4A148C", stroke: "#311B92", text: "#fff" },
-  diamondGreen: { fill: "#1B5E20", stroke: "#0D3B0E", text: "#fff" },
   line: { phy: "#2E7D32", dig: "#F9A825", blk: "#7E57C2" },
 };
 
@@ -29,103 +25,109 @@ interface StepData {
 
 const steps: StepData[] = [
   {
-    step: 0, title: "Enterprise Verification (KYB)",
-    participants: ["Seller", "Buyer", "KYB Center"],
-    highlightIds: ["kyb-l", "kyb-r", "seller", "seller-w", "buyer", "buyer-w"],
-    connectionIds: ["c0a", "c0b"],
-    description: "Before any activity, both seller and buyer complete Know Your Business verification. This is a permissioned system — no KYB, no access.",
-    output: "Membership status + linked custody wallet",
-  },
-  {
     step: 1, title: "Inspection & Certification",
     participants: ["Seller", "Inspector (SGS)", "Traceability (Agrichain)"],
-    highlightIds: ["seller", "inspector", "cert", "trace"],
-    connectionIds: ["c1a", "c1b", "c1c"],
+    highlightIds: ["seller", "inspector", "traceability"],
+    connectionIds: ["c1a", "c1b"],
     description: "Seller prepares export lot. SGS Vietnam conducts independent quality inspection (moisture, broken grain %, impurities). Agrichain records origin data on blockchain for EU compliance (EUDR).",
     output: "Certificate of Quality + Traceability Record",
   },
   {
     step: 2, title: "Ownership Transfer & Warehousing",
-    participants: ["Seller", "CCP₁", "Warehouse (Gemadept)"],
-    highlightIds: ["seller", "contract", "ccp1", "cert", "warehouse"],
-    connectionIds: ["c2a", "c2b"],
-    description: "CCP₁ purchases the commodity from Seller, transferring legal ownership. Goods are stored at Gemadept warehouse and 'frozen' — cannot be exported, sold, or pledged outside the system. This creates bankruptcy isolation.",
-    output: "Goods in warehouse, owned by CCP₁, immobilized",
+    participants: ["Seller", "Central Clearing Party 1", "Insurance (BIC)", "Warehouse (Gemadept)"],
+    highlightIds: ["seller", "ccp1", "insurance", "warehouse"],
+    connectionIds: ["c2a", "c2b", "c2c"],
+    description: "CCP1 purchases the commodity from Seller, transferring legal ownership. Goods are stored at Gemadept warehouse and 'frozen' - cannot be exported, sold, or pledged outside the system. BIC provides cargo and warehouse coverage.",
+    output: "Goods in warehouse, owned by CCP1, insured, immobilized",
   },
   {
-    step: 3, title: "Document Aggregation & Digitization",
-    participants: ["Warehouse", "Institutional Custody", "Insurance (BIC)", "Bank (MB Bank)"],
-    highlightIds: ["warehouse", "inst-cust", "insurance", "bank"],
-    connectionIds: ["c3a", "c3b"],
-    description: "All documents are aggregated: Warehouse Receipt from Gemadept, Certificate of Quality from SGS, Insurance E-Contract from BIC. Everything flows to MB Bank for digitization and cross-verification.",
-    output: "Complete digitized document set at Bank",
+    step: 3, title: "Document Aggregation & Custody",
+    participants: ["Warehouse (Gemadept)", "Institutional Custody"],
+    highlightIds: ["warehouse", "inst-custody"],
+    connectionIds: ["c3a"],
+    description: "All documents are aggregated at Institutional Custody: Warehouse Receipt, Certificate of Quality, Insurance E-Contract. Everything is cross-verified and digitized.",
+    output: "Complete digitized document set under institutional custody",
   },
   {
-    step: 4, title: "Mint Ratio Determination",
+    step: 4, title: "Tokenization & Mint Ratio",
     participants: ["Bank (MB Bank)", "Tokenization Platform (GOE)"],
-    highlightIds: ["bank", "tokenization", "proof", "inst-cust"],
-    connectionIds: ["c4a", "c4b", "c4c"],
-    description: "Bank and Tokenization Platform determine: (a) Mint Ratio — e.g. 105 tons in warehouse = 100 tokens (5% buffer for overcollateralization), and (b) tokenization fee percentage.",
-    output: "Proof of Assets — confirmation that all conditions are met",
+    highlightIds: ["bank-center", "tokenization"],
+    connectionIds: ["c4a"],
+    description: "Bank and Tokenization Platform determine: (a) Mint Ratio - e.g. 105 tons in warehouse = 100 tokens (5% buffer for overcollateralization), and (b) tokenization fee percentage.",
+    output: "Proof of Assets - confirmation that all conditions are met",
   },
   {
-    step: 5, title: "Token Minting",
-    participants: ["Tokenization Platform", "Custody Wallet", "Seller"],
-    highlightIds: ["tokenization", "cust-w", "seller-w", "seller"],
+    step: 5, title: "Token Minting & Receipt",
+    participants: ["Tokenization Platform", "Seller"],
+    highlightIds: ["tokenization", "seller"],
     connectionIds: ["c5a", "c5b"],
-    description: "Tokens are minted (e.g. 100 VNRICE-5B tokens, each = 1 ton of 5% broken white rice) directly into the Custody Wallet — NOT into Seller's personal wallet.",
-    output: "Tokens visible in Seller's app, held by Institutional Custody",
+    description: "Tokens are minted (e.g. 100 VNRICE-5B tokens, each = 1 ton of 5% broken white rice). Seller receives receipt tokens representing ownership of the underlying commodity.",
+    output: "Receipt tokens issued to Seller",
   },
   {
-    step: 6, title: "Trading & Finance",
-    participants: ["Seller", "Buyer", "Commercial Bank", "Exchange", "CCP₂", "Oracle"],
-    highlightIds: ["seller-w", "comm-bank", "cb-w", "ccp2", "exchange", "exch-w", "buyer-w", "buyer", "oracle"],
-    connectionIds: ["c6a", "c6b", "c6c", "c6d", "c6e"],
-    description: "Seller has three options: (A) Use tokens as collateral at Commercial Bank for trade finance. (B) Sell tokens on Exchange — CCP₂ provides market making, Oracle feeds real-time price. (C) Hold tokens as balance sheet assets.",
-    output: "Seller receives liquidity. Buyer acquires tokens.",
+    step: 6, title: "Trading & Market Making",
+    participants: ["Market Maker", "Exchange", "Institutional Custody", "Bank"],
+    highlightIds: ["market-maker", "exchange", "inst-custody", "bank-top", "bank-center"],
+    connectionIds: ["c6a", "c6b", "c6c"],
+    description: "Market Maker provides liquidity on the Exchange. Institutional Custody connects to both the Exchange and Bank for settlement. Tokens can be traded on the secondary market.",
+    output: "Liquid secondary market for commodity tokens",
   },
   {
-    step: 7, title: "Redemption & Export",
-    participants: ["Buyer", "Redeem Gateway", "Tokenization Platform (Burn)", "Warehouse"],
-    highlightIds: ["buyer", "redeem", "burn", "tokenization", "warehouse", "cert"],
-    connectionIds: ["c7a", "c7b", "c7c", "c7d", "c7e"],
-    description: "When Buyer wants physical goods: submit redemption request (minimum 100 tokens = 100 tons). Tokens are sent to Tokenization Platform and permanently burned. Warehouse releases goods for export.",
-    output: "Tokens destroyed, goods released from warehouse",
+    step: 7, title: "Redemption",
+    participants: ["Buyer", "Tokenization Platform", "Institutional Custody"],
+    highlightIds: ["buyer", "tokenization", "inst-custody"],
+    connectionIds: ["c7a"],
+    description: "When Buyer wants physical goods: submit redemption request (minimum 100 tokens = 100 tons). Tokens are sent to Tokenization Platform for processing.",
+    output: "Redemption request processed",
+  },
+  {
+    step: 8, title: "Export & Physical Delivery",
+    participants: ["Warehouse (Gemadept)", "Buyer"],
+    highlightIds: ["warehouse", "buyer"],
+    connectionIds: ["c8a"],
+    description: "Warehouse releases goods for export. Physical commodity is shipped to the Buyer. Full traceability records accompany the shipment.",
+    output: "Physical goods delivered to Buyer",
+  },
+  {
+    step: 9, title: "Token Burn",
+    participants: ["Tokenization Platform", "Institutional Custody"],
+    highlightIds: ["tokenization", "inst-custody"],
+    connectionIds: ["c9a"],
+    description: "Once physical delivery is confirmed, corresponding tokens are permanently burned on the Tokenization Platform. This ensures 1:1 backing is maintained at all times.",
+    output: "Tokens destroyed, supply reduced to match physical inventory",
   },
 ];
 
 /* ═══════════════════════════════════════════
    SVG COMPONENTS
    ═══════════════════════════════════════════ */
-const Card = ({ id, x, y, w, h, label, sub, colors, active, dimmed }: {
+const RRect = ({ id, x, y, w, h, label, sub, colors, active, dimmed }: {
   id: string; x: number; y: number; w: number; h: number;
   label: string; sub?: string; colors: { fill: string; stroke: string; text: string };
   active: boolean; dimmed: boolean;
 }) => (
   <g data-id={id} style={{ opacity: dimmed ? 0.15 : 1, transition: "opacity 0.4s ease" }}>
-    <rect x={x} y={y} width={w} height={h} rx={6} fill={colors.fill}
+    <rect x={x} y={y} width={w} height={h} rx={h / 2} fill={colors.fill}
       stroke={active ? "#fff" : colors.stroke} strokeWidth={active ? 2.5 : 1.2}
       filter={active ? "url(#glow)" : undefined} />
-    <text x={x + w / 2} y={sub ? y + h / 2 - 5 : y + h / 2 + 4} textAnchor="middle"
-      fill={colors.text} fontSize="10" fontWeight="700" fontFamily="Inter,sans-serif">{label}</text>
-    {sub && <text x={x + w / 2} y={y + h / 2 + 9} textAnchor="middle" fill={colors.text}
-      fontSize="8" fontFamily="Inter,sans-serif" opacity="0.85">{sub}</text>}
+    <text x={x + w / 2} y={sub ? y + h / 2 - 4 : y + h / 2 + 4} textAnchor="middle"
+      fill={colors.text} fontSize="11" fontWeight="700" fontFamily="Inter,sans-serif">{label}</text>
+    {sub && <text x={x + w / 2} y={y + h / 2 + 10} textAnchor="middle" fill={colors.text}
+      fontSize="9" fontFamily="Inter,sans-serif" opacity="0.85">{sub}</text>}
   </g>
 );
 
-const Diamond = ({ id, cx, cy, size, label, sub, colors, active, dimmed }: {
-  id: string; cx: number; cy: number; size: number;
-  label: string; sub?: string; colors: { fill: string; stroke: string; text: string };
+const Oval = ({ id, cx, cy, rx, ry, label, colors, active, dimmed }: {
+  id: string; cx: number; cy: number; rx: number; ry: number;
+  label: string; colors: { fill: string; stroke: string; text: string };
   active: boolean; dimmed: boolean;
 }) => (
   <g data-id={id} style={{ opacity: dimmed ? 0.15 : 1, transition: "opacity 0.4s ease" }}>
-    <polygon points={`${cx},${cy - size} ${cx + size},${cy} ${cx},${cy + size} ${cx - size},${cy}`}
-      fill={colors.fill} stroke={active ? "#fff" : colors.stroke} strokeWidth={active ? 2.5 : 1.2}
+    <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill={colors.fill}
+      stroke={active ? "#fff" : colors.stroke} strokeWidth={active ? 2.5 : 1.2}
       filter={active ? "url(#glow)" : undefined} />
-    <text x={cx} y={sub ? cy - 2 : cy + 4} textAnchor="middle" fill={colors.text}
-      fontSize="8" fontWeight="700" fontFamily="Inter,sans-serif">{label}</text>
-    {sub && <text x={cx} y={cy + 10} textAnchor="middle" fill={colors.text}
-      fontSize="7" fontFamily="Inter,sans-serif">{sub}</text>}
+    <text x={cx} y={cy + 4} textAnchor="middle" fill={colors.text}
+      fontSize="11" fontWeight="700" fontFamily="Inter,sans-serif">{label}</text>
   </g>
 );
 
@@ -155,29 +157,25 @@ const Conn = ({ id, d, color, dashed, label, lx, ly, active, dimmed }: {
     )}
     {label && lx !== undefined && ly !== undefined && (
       <g>
-        <rect x={lx - 3} y={ly - 9} width={label.length * 5 + 10} height={15} rx={3}
+        <rect x={lx - 3} y={ly - 9} width={label.length * 5.5 + 12} height={16} rx={3}
           fill={color} opacity={active ? 0.92 : 0.55} />
-        <text x={lx + label.length * 2.5 + 2} y={ly + 2} textAnchor="middle" fill="#fff"
-          fontSize="7" fontWeight="600" fontFamily="Inter,sans-serif">{label}</text>
+        <text x={lx + label.length * 2.75 + 3} y={ly + 3} textAnchor="middle" fill="#fff"
+          fontSize="8" fontWeight="600" fontFamily="Inter,sans-serif">{label}</text>
       </g>
     )}
   </g>
 );
 
 /* ═══════════════════════════════════════════
-   MAIN COMPONENT — layout matches RWA_Hub_Flow_update.pdf exactly
-   viewBox 1400 x 820
-   
-   Row layout (Y coords):
-   - KYB row: y=20
-   - Top entities (Seller/Buyer/CommBank/Exchange): y=80
-   - Wallets: y=130  
-   - Step 6 lines: y=270
-   - Custody wallet row: y=340
-   - Middle row (Contract/CCP1/InstCustody): y=420
-   - Inspector/Cert/Warehouse/Bank row: y=500
-   - Insurance/Traceability row: y=590
-   - Export/Redeem row: y=700
+   MAIN COMPONENT - matches RWA_Hub_Flow_wrap.png
+   viewBox 1500 x 650
+
+   Layout:
+   - Main horizontal flow: Seller -> Inspector -> Warehouse -> Inst Custody -> Bank -> Tokenization -> Buyer
+   - Top area: Exchange+CCP1 (gold box), Market Maker (purple), Bank (gold box), Oracle (purple)
+   - Below Inspector: Traceability
+   - Insurance between Inspector and Warehouse area
+   - Bottom paths: receipt token return, export, redemption, burn
    ═══════════════════════════════════════════ */
 const InfrastructureFlow = () => {
   const [activeStep, setActiveStep] = useState<number | null>(null);
@@ -219,7 +217,7 @@ const InfrastructureFlow = () => {
         {/* SVG DIAGRAM */}
         <ScrollReveal delay={0.1}>
           <div className="overflow-x-auto rounded-2xl border border-[hsl(var(--green-accent))]/12 bg-white/90 backdrop-blur-sm shadow-sm p-3 md:p-5">
-            <svg viewBox="0 0 1400 820" className="w-full min-w-[900px]" style={{ maxHeight: 820 }}>
+            <svg viewBox="0 0 1500 620" className="w-full min-w-[900px]" style={{ maxHeight: 700 }}>
               <defs>
                 <filter id="glow"><feGaussianBlur stdDeviation="3" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
                 {Object.values(C.line).map(c => (
@@ -229,136 +227,114 @@ const InfrastructureFlow = () => {
                 ))}
               </defs>
 
-              {/* ══ GROUP BOXES ══ */}
-              {/* Seller group */}
-              <GBox x={48} y={78} w={220} h={100} color={C.gold.stroke} dimmed={dim("seller")} />
-              {/* Commercial Bank group */}
-              <GBox x={395} y={60} w={170} h={125} color={C.gold.stroke} dimmed={dim("comm-bank")} />
-              {/* Exchange group */}
-              <GBox x={780} y={55} w={165} h={130} color={C.purple.stroke} dimmed={dim("exchange")} />
-              {/* Buyer group */}
-              <GBox x={1140} y={78} w={220} h={100} color={C.gold.stroke} dimmed={dim("buyer")} />
-              {/* Custody group */}
-              <GBox x={580} y={325} w={165} h={130} color={C.purple.stroke} dimmed={dim("cust-w")} />
-              {/* Tokenization group */}
-              <GBox x={940} y={470} w={170} h={175} color={C.purple.stroke} dimmed={dim("tokenization")} />
+              {/* ══ GROUP BOXES (gold dashed) ══ */}
+              {/* Exchange + CCP1 box */}
+              <GBox x={445} y={55} w={250} h={185} color={C.gold.stroke} dimmed={dim("exchange") && dim("ccp1")} />
+              {/* Bank top box */}
+              <GBox x={870} y={55} w={150} h={115} color={C.gold.stroke} dimmed={dim("bank-top")} />
 
-              {/* ══ CONNECTIONS — all orthogonal ══ */}
+              {/* ══ CONNECTIONS - all orthogonal ══ */}
 
-              {/* Step 0: KYB → Seller/Buyer */}
-              <Conn id="c0a" d="M130,55 V78" color={C.line.phy} label="0" lx={117} ly={65} active={ca("c0a")} dimmed={cdim("c0a")} />
-              <Conn id="c0b" d="M1280,55 V78" color={C.line.phy} label="0" lx={1267} ly={65} active={ca("c0b")} dimmed={cdim("c0b")} />
+              {/* Step 1: Seller -> Inspector */}
+              <Conn id="c1a" d="M145,380 H260" color={C.line.phy} label="1" lx={190} ly={370} active={ca("c1a")} dimmed={cdim("c1a")} />
+              {/* Inspector <-> Traceability */}
+              <Conn id="c1b" d="M330,410 V465" color={C.line.phy} active={ca("c1b")} dimmed={cdim("c1b")} />
 
-              {/* Step 1: Seller→Inspector (down), Inspector→Cert, Cert→Trace */}
-              <Conn id="c1a" d="M100,178 V510" color={C.line.phy} label="1" lx={86} ly={340} active={ca("c1a")} dimmed={cdim("c1a")} />
-              <Conn id="c1b" d="M195,525 H260" color={C.line.phy} active={ca("c1b")} dimmed={cdim("c1b")} />
-              <Conn id="c1c" d="M310,555 V610 H210" color={C.line.phy} active={ca("c1c")} dimmed={cdim("c1c")} />
+              {/* Step 2: Seller -> CCP1 (up-right) */}
+              <Conn id="c2a" d="M95,355 V160 H455" color={C.line.phy} label="2" lx={250} ly={150} active={ca("c2a")} dimmed={cdim("c2a")} />
+              {/* CCP1 -> Insurance */}
+              <Conn id="c2b" d="M530,200 V290 H420" color={C.line.phy} label="2" lx={460} ly={280} active={ca("c2b")} dimmed={cdim("c2b")} />
+              {/* CCP1 -> Warehouse */}
+              <Conn id="c2c" d="M570,200 V355 H555" color={C.line.phy} active={ca("c2c")} dimmed={cdim("c2c")} />
 
-              {/* Step 2: Contract→CCP1, Cert→Warehouse */}
-              <Conn id="c2a" d="M345,435 H440" color={C.line.dig} label="2. Transfer Ownership" lx={348} ly={425} active={ca("c2a")} dimmed={cdim("c2a")} />
-              <Conn id="c2b" d="M345,525 H440" color={C.line.phy} label="2. Storage" lx={365} ly={515} active={ca("c2b")} dimmed={cdim("c2b")} />
+              {/* Step 3: Warehouse -> Inst Custody */}
+              <Conn id="c3a" d="M555,380 H700" color={C.line.phy} label="3" lx={615} ly={370} active={ca("c3a")} dimmed={cdim("c3a")} />
 
-              {/* Step 3: Warehouse→InstCustody (Invoice), Warehouse→Insurance (Contract) */}
-              <Conn id="c3a" d="M520,510 H580 V440 H590" color={C.line.dig} label="3. Invoice" lx={530} ly={475} active={ca("c3a")} dimmed={cdim("c3a")} />
-              <Conn id="c3b" d="M500,545 V600 H580" color={C.line.phy} label="3. Contract" lx={510} ly={575} active={ca("c3b")} dimmed={cdim("c3b")} />
+              {/* Step 4: Bank -> Tokenization */}
+              <Conn id="c4a" d="M960,380 H1080" color={C.line.dig} label="4. Tokenization" lx={975} ly={370} active={ca("c4a")} dimmed={cdim("c4a")} />
 
-              {/* Step 4: InstCustody→Bank (E-invoice), Insurance→Bank (E-contract), Bank→Tokenization */}
-              <Conn id="c4a" d="M745,435 H800" color={C.line.dig} label="4. E-invoice" lx={748} ly={425} active={ca("c4a")} dimmed={cdim("c4a")} />
-              <Conn id="c4b" d="M730,610 H800 V535" color={C.line.dig} label="4. E-contract" lx={733} ly={600} active={ca("c4b")} dimmed={cdim("c4b")} />
-              <Conn id="c4c" d="M885,515 H940" color={C.line.dig} label="4. Request" lx={888} ly={505} active={ca("c4c")} dimmed={cdim("c4c")} />
+              {/* Step 5: Mint token */}
+              <Conn id="c5a" d="M1145,330 V270 H1145" color={C.line.blk} dashed label="5. Mint token" lx={1060} ly={260} active={ca("c5a")} dimmed={cdim("c5a")} />
+              {/* Receive receipt token - long path back to Seller at bottom */}
+              <Conn id="c5b" d="M1080,400 V560 H100 V405" color={C.line.phy} label="5. Receive receipt token" lx={400} ly={550} active={ca("c5b")} dimmed={cdim("c5b")} />
 
-              {/* Step 5: Tokenization→CustodyWallet (Mint), CustodyWallet→SellerWallet (Receive) */}
-              <Conn id="c5a" d="M940,490 H760 V365 H745" color={C.line.blk} dashed label="5. Mint token" lx={800} ly={480} active={ca("c5a")} dimmed={cdim("c5a")} />
-              <Conn id="c5b" d="M580,365 H270 V155 H260" color={C.line.blk} dashed label="5. Receive token" lx={390} ly={355} active={ca("c5b")} dimmed={cdim("c5b")} />
+              {/* Step 6: Market Maker -> Exchange */}
+              <Conn id="c6a" d="M700,105 H680" color={C.line.blk} dashed label="6" lx={675} ly={95} active={ca("c6a")} dimmed={cdim("c6a")} />
+              {/* Inst Custody -> up to Exchange area */}
+              <Conn id="c6b" d="M770,345 V200 V105 H695" color={C.line.blk} dashed label="6" lx={735} ly={225} active={ca("c6b")} dimmed={cdim("c6b")} />
+              {/* Inst Custody -> Bank top */}
+              <Conn id="c6c" d="M830,360 H870 V130 H880" color={C.line.dig} label="6" lx={860} ly={250} active={ca("c6c")} dimmed={cdim("c6c")} />
 
-              {/* Step 6: Lending, Trading paths, LP, Exchange→Buyer, Oracle */}
-              <Conn id="c6a" d="M268,130 V280 H395" color={C.line.dig} label="6. Lending" lx={300} ly={270} active={ca("c6a")} dimmed={cdim("c6a")} />
-              <Conn id="c6b" d="M268,145 V300 H620 V300 H790" color={C.line.dig} label="6. Trading" lx={500} ly={290} active={ca("c6b")} dimmed={cdim("c6b")} />
-              <Conn id="c6c" d="M730,130 H780" color={C.line.dig} label="6. LP" lx={738} ly={120} active={ca("c6c")} dimmed={cdim("c6c")} />
-              <Conn id="c6d" d="M945,130 H1140" color={C.line.dig} label="6. Trading" lx={1010} ly={120} active={ca("c6d")} dimmed={cdim("c6d")} />
-              <Conn id="c6e" d="M1150,300 V185 H945" color={C.line.blk} dashed active={ca("c6e")} dimmed={cdim("c6e")} />
+              {/* Step 7: Redemption - purple from bottom to Inst Custody */}
+              <Conn id="c7a" d="M1310,400 V520 H810 V410" color={C.line.blk} dashed label="7. Redemption" lx={1000} ly={510} active={ca("c7a")} dimmed={cdim("c7a")} />
 
-              {/* Step 7-8: Redemption paths */}
-              <Conn id="c7a" d="M310,555 V735 H440" color={C.line.phy} label="7. Check data" lx={320} ly={725} active={ca("c7a")} dimmed={cdim("c7a")} />
-              <Conn id="c7b" d="M570,730 H940" color={C.line.blk} dashed label="7. Send token" lx={700} ly={720} active={ca("c7b")} dimmed={cdim("c7b")} />
-              <Conn id="c7c" d="M570,750 H940" color={C.line.blk} dashed label="9. Execute" lx={700} ly={755} active={ca("c7c")} dimmed={cdim("c7c")} />
-              <Conn id="c7d" d="M480,710 V555 H465" color={C.line.phy} label="8. Export" lx={468} ly={630} active={ca("c7d")} dimmed={cdim("c7d")} />
-              <Conn id="c7e" d="M1060,745 H1350 V175 H1340" color={C.line.phy} label="8. Shipment" lx={1160} ly={750} active={ca("c7e")} dimmed={cdim("c7e")} />
+              {/* Step 8: Export - green from bottom */}
+              <Conn id="c8a" d="M510,410 V580 H1260 V400" color={C.line.phy} label="8. Export" lx={850} ly={575} active={ca("c8a")} dimmed={cdim("c8a")} />
+
+              {/* Step 9: Burn token */}
+              <Conn id="c9a" d="M810,410 V490 H1100 V400" color={C.line.blk} dashed label="9. Burn token" lx={920} ly={483} active={ca("c9a")} dimmed={cdim("c9a")} />
+
+              {/* Oracle -> Tokenization Platform (dashed) */}
+              <path d="M1120,165 V330" fill="none" stroke={C.line.blk} strokeWidth={1.2} strokeDasharray="8,4"
+                markerEnd={`url(#arr-${C.line.blk.replace('#','')})`} opacity={0.35} />
 
               {/* ══ ENTITY CARDS ══ */}
 
-              {/* KYB Centers */}
-              <Card id="kyb-l" x={72} y={18} w={115} h={36} label="KYB Center" colors={C.green} active={hi("kyb-l") && activeStep===0} dimmed={dim("kyb-l")} />
-              <Card id="kyb-r" x={1222} y={18} w={115} h={36} label="KYB Center" colors={C.green} active={hi("kyb-r") && activeStep===0} dimmed={dim("kyb-r")} />
+              {/* Seller - far left, green rounded */}
+              <RRect id="seller" x={40} y={355} w={105} h={50} label="Seller" colors={C.green}
+                active={hi("seller") && activeStep !== null} dimmed={dim("seller")} />
 
-              {/* Seller + Wallet */}
-              <Card id="seller" x={55} y={88} w={90} h={48} label="Seller" colors={C.green} active={hi("seller") && activeStep!==null} dimmed={dim("seller")} />
-              <Card id="seller-w" x={155} y={95} w={105} h={36} label="Seller Wallet" colors={C.goldLight} active={hi("seller-w") && activeStep!==null} dimmed={dim("seller-w")} />
+              {/* Inspector - green */}
+              <RRect id="inspector" x={260} y={355} w={130} h={50} label="Inspector" colors={C.green}
+                active={hi("inspector") && activeStep !== null} dimmed={dim("inspector")} />
 
-              {/* Commercial Bank group */}
-              <Card id="comm-bank" x={405} y={68} w={150} h={42} label="Commercial" sub="Bank" colors={C.gold} active={hi("comm-bank") && activeStep!==null} dimmed={dim("comm-bank")} />
-              <Card id="cb-w" x={405} y={118} w={150} h={36} label="Commercial Bank Wallet" colors={C.goldLight} active={hi("cb-w") && activeStep!==null} dimmed={dim("cb-w")} />
+              {/* Traceability - below Inspector */}
+              <RRect id="traceability" x={275} y={465} w={110} h={40} label="Traceability" colors={C.green}
+                active={hi("traceability") && activeStep !== null} dimmed={dim("traceability")} />
 
-              {/* CCP2 */}
-              <Card id="ccp2" x={620} y={85} w={140} h={55} label="Central Clearing" sub="Party 2" colors={C.gold} active={hi("ccp2") && activeStep!==null} dimmed={dim("ccp2")} />
+              {/* Insurance - between Inspector and Warehouse area */}
+              <RRect id="insurance" x={300} y={280} w={120} h={42} label="Insurance" colors={C.green}
+                active={hi("insurance") && activeStep !== null} dimmed={dim("insurance")} />
 
-              {/* Exchange group */}
-              <Card id="exchange" x={790} y={63} w={145} h={38} label="Exchange" colors={C.gold} active={hi("exchange") && activeStep!==null} dimmed={dim("exchange")} />
-              <Card id="exch-w" x={790} y={110} w={145} h={42} label="Exchange Wallet" colors={C.goldLight} active={hi("exch-w") && activeStep!==null} dimmed={dim("exch-w")} />
+              {/* CCP1 - inside gold box */}
+              <RRect id="ccp1" x={460} y={160} w={165} h={50} label="Central Clearing" sub="Party 1" colors={C.green}
+                active={hi("ccp1") && activeStep !== null} dimmed={dim("ccp1")} />
 
-              {/* Buyer + Wallet */}
-              <Card id="buyer-w" x={1148} y={95} w={105} h={36} label="Buyer Wallet" colors={C.goldLight} active={hi("buyer-w") && activeStep!==null} dimmed={dim("buyer-w")} />
-              <Card id="buyer" x={1265} y={88} w={85} h={48} label="Buyer" colors={C.green} active={hi("buyer") && activeStep!==null} dimmed={dim("buyer")} />
+              {/* Exchange - inside gold box */}
+              <RRect id="exchange" x={470} y={80} w={120} h={42} label="Exchange" colors={C.gold}
+                active={hi("exchange") && activeStep !== null} dimmed={dim("exchange")} />
 
-              {/* Oracle — circle */}
-              <g data-id="oracle" style={{ opacity: dim("oracle") ? 0.15 : 1, transition: "opacity 0.4s ease" }}>
-                <circle cx={1140} cy={310} r={42} fill={C.purple.fill} stroke={hi("oracle") && activeStep!==null ? "#fff" : C.purple.stroke} strokeWidth={hi("oracle") && activeStep!==null ? 2.5 : 1.2} filter={hi("oracle") && activeStep!==null ? "url(#glow)" : undefined} />
-                <text x={1140} y={314} textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700" fontFamily="Inter,sans-serif">Oracle</text>
-              </g>
+              {/* Market Maker - purple, right of gold box */}
+              <Oval id="market-maker" cx={770} cy={100} rx={70} ry={30} label="Market Maker" colors={C.purple}
+                active={hi("market-maker") && activeStep !== null} dimmed={dim("market-maker")} />
 
-              {/* Custody Wallet */}
-              <Card id="cust-w" x={590} y={335} w={145} h={40} label="Custody Wallet" colors={C.purple} active={hi("cust-w") && activeStep!==null} dimmed={dim("cust-w")} />
-              {/* Institutional Custody */}
-              <Card id="inst-cust" x={590} y={390} w={145} h={50} label="Institutional" sub="Custody" colors={C.purpleLight} active={hi("inst-cust") && activeStep!==null} dimmed={dim("inst-cust")} />
+              {/* Bank - top right, in gold box */}
+              <RRect id="bank-top" x={885} y={80} w={120} h={42} label="Bank" colors={C.gold}
+                active={hi("bank-top") && activeStep !== null} dimmed={dim("bank-top")} />
 
-              {/* Contract diamond */}
-              <Diamond id="contract" cx={310} cy={435} size={34} label="Contract" colors={C.diamond} active={hi("contract") && activeStep!==null} dimmed={dim("contract")} />
+              {/* Warehouse - center, green */}
+              <RRect id="warehouse" x={450} y={355} w={120} h={50} label="Warehouse" colors={C.green}
+                active={hi("warehouse") && activeStep !== null} dimmed={dim("warehouse")} />
 
-              {/* CCP1 */}
-              <Card id="ccp1" x={440} y={410} w={140} h={50} label="Central Clearing" sub="Party 1" colors={C.green} active={hi("ccp1") && activeStep!==null} dimmed={dim("ccp1")} />
+              {/* Institutional Custody - large green center */}
+              <RRect id="inst-custody" x={700} y={345} w={160} h={65} label="Institutional" sub="Custody" colors={C.green}
+                active={hi("inst-custody") && activeStep !== null} dimmed={dim("inst-custody")} />
 
-              {/* Inspector */}
-              <Card id="inspector" x={75} y={500} w={120} h={45} label="Inspector" sub="SGS" colors={C.green} active={hi("inspector") && activeStep!==null} dimmed={dim("inspector")} />
+              {/* Bank - center right */}
+              <RRect id="bank-center" x={900} y={355} w={110} h={50} label="Bank" colors={C.gold}
+                active={hi("bank-center") && activeStep !== null} dimmed={dim("bank-center")} />
 
-              {/* Certification diamond */}
-              <Diamond id="cert" cx={310} cy={525} size={32} label="Certification" colors={C.diamondGreen} active={hi("cert") && activeStep!==null} dimmed={dim("cert")} />
+              {/* Oracle - purple oval, top right */}
+              <Oval id="oracle" cx={1120} cy={140} rx={55} ry={28} label="Oracle" colors={C.purple}
+                active={hi("oracle") && activeStep !== null} dimmed={dim("oracle")} />
 
-              {/* Warehouse */}
-              <Card id="warehouse" x={440} y={500} w={125} h={48} label="Warehouse" sub="Gemadept" colors={C.green} active={hi("warehouse") && activeStep!==null} dimmed={dim("warehouse")} />
+              {/* Tokenization Platform - purple */}
+              <RRect id="tokenization" x={1080} y={335} w={160} h={65} label="Tokenization" sub="Platform" colors={C.purple}
+                active={hi("tokenization") && activeStep !== null} dimmed={dim("tokenization")} />
 
-              {/* Bank */}
-              <Card id="bank" x={800} y={495} w={120} h={48} label="Bank" sub="MB Bank" colors={C.gold} active={hi("bank") && activeStep!==null} dimmed={dim("bank")} />
-
-              {/* Tokenization Platform */}
-              <Card id="tokenization" x={950} y={480} w={150} h={55} label="Tokenization" sub="Platform" colors={C.purple} active={hi("tokenization") && activeStep!==null} dimmed={dim("tokenization")} />
-
-              {/* Proof of Assets diamond */}
-              <Diamond id="proof" cx={1025} cy={580} size={36} label="Proof of" sub="Assets" colors={C.diamond} active={hi("proof") && activeStep!==null} dimmed={dim("proof")} />
-
-              {/* Traceability */}
-              <Card id="trace" x={75} y={600} w={135} h={40} label="Traceability" sub="Agrichain" colors={C.green} active={hi("trace") && activeStep!==null} dimmed={dim("trace")} />
-
-              {/* Insurance */}
-              <Card id="insurance" x={580} y={588} w={150} h={46} label="Insurance" sub="BIC" colors={C.green} active={hi("insurance") && activeStep!==null} dimmed={dim("insurance")} />
-
-              {/* Burn */}
-              <Card id="burn" x={960} y={630} w={130} h={48} label="Burn" colors={C.purple} active={hi("burn") && activeStep!==null} dimmed={dim("burn")} />
-
-              {/* Redeem Gateway */}
-              <Card id="redeem" x={440} y={710} w={130} h={55} label="Redeem" sub="Gateway" colors={C.purple} active={hi("redeem") && activeStep!==null} dimmed={dim("redeem")} />
-
-              {/* 7. Oracle Update label near warehouse */}
-              <text x={508} y={575} fontSize="7" fill={C.line.dig} fontFamily="Inter,sans-serif" fontWeight="600" opacity={0.5}>7. Oracle Update</text>
+              {/* Buyer - far right, green */}
+              <RRect id="buyer" x={1280} y={355} w={90} h={50} label="Buyer" colors={C.green}
+                active={hi("buyer") && activeStep !== null} dimmed={dim("buyer")} />
             </svg>
           </div>
         </ScrollReveal>
@@ -380,11 +356,11 @@ const InfrastructureFlow = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-4 md:grid-cols-8 gap-2 mb-6">
-              {steps.map(s => (
-                <button key={s.step} onClick={() => setActiveStep(activeStep === s.step ? null : s.step)}
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2 mb-6">
+              {steps.map((s, i) => (
+                <button key={s.step} onClick={() => setActiveStep(activeStep === i ? null : i)}
                   className={`px-3 py-3 rounded-lg text-sm font-sans font-medium transition-all duration-200 active:scale-[0.96] ${
-                    activeStep === s.step
+                    activeStep === i
                       ? "bg-[hsl(var(--green-accent))] text-white shadow-sm"
                       : "bg-white border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20"
                   }`}>

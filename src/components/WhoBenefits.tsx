@@ -64,7 +64,7 @@ const WhoBenefits = () => (
               <ul className="space-y-2 flex-1">
                 {s.points.map((p) => (
                   <li key={p} className="text-sm font-sans text-muted-foreground leading-relaxed flex gap-2.5">
-                    <span className="text-[hsl(var(--green-accent))] shrink-0 mt-0.5">—</span>
+                    <span className="text-[hsl(var(--green-accent))] shrink-0 mt-0.5">-</span>
                     {p}
                   </li>
                 ))}
@@ -76,7 +76,7 @@ const WhoBenefits = () => (
 
       <ScrollReveal delay={0.4}>
         <p className="mt-14 text-center text-body-lg text-muted-foreground italic font-serif">
-          "No one needs to change their business — just connect to the infrastructure."
+          "No one needs to change their business - just connect to the infrastructure."
         </p>
       </ScrollReveal>
     </div>

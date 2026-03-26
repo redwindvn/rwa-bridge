@@ -25,7 +25,7 @@ const phases = [
   {
     phase: "Phase 3",
     title: "Southeast Asia",
-    time: "2028–2029",
+    time: "2028-2029",
     badge: "A regional market forming",
     items: [
       "Thailand, Indonesia, Malaysia",
